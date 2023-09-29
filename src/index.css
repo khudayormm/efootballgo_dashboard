@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* src/styles/fonts.css */
+
+@font-face {
+    font-family: 'MyFont';
+    src: url('./assets/fonts/Poppins/Poppins-Medium.woff2') format('woff2'),
+         url('./assets//fonts/Poppins/Poppins-ExtraLight.woff2') format('woff'),
+         url('./assets/fonts/Poppins/Poppins-Light.woff2') format('woff'),
+         url('./assets/fonts/Poppins/Poppins-Bold.woff2') format('woff'),
+         url('./assets/fonts/Poppins/Poppins-Regular.woff2') format('woff'),
+         url('./assets/fonts/Poppins/Poppins-SemiBold.woff2') format('woff');
+  }
+  
+  body {
+    font-family: 'MyFont', sans-serif;
+  }
+  
