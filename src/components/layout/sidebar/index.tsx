@@ -1,19 +1,29 @@
 import React from 'react';
-import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
+// import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
 
 
 const LeftBar: React.FC = () => {
   return(
-    <div style={{ display: 'flex', height: '100%', minHeight: '400px' }}>
-      <Sidebar className="bg-red-400 h-[100vh]" collapsed>
-        <Menu>
-          <MenuItem> Documentation</MenuItem>
-          <MenuItem> Calendar</MenuItem>
-          <MenuItem> E-commerce</MenuItem>
-          <MenuItem> Examples</MenuItem>
-        </Menu>
-      </Sidebar>
-    </div>
+    <nav className="w-64 p-5 bg-gray-800 text-white">
+    <h1 className="text-2xl font-bold mb-4">Sidebar</h1>
+    <ul>
+      <li className="mb-2">
+        <a href="/" className="block text-gray-300 hover:text-white">
+          Dashboard
+        </a>
+      </li>
+      <li className="mb-2">
+        <a href="/profile" className="block text-gray-300 hover:text-white">
+          Profile
+        </a>
+      </li>
+      <li className="mb-2">
+        <a href="/settings" className="block text-gray-300 hover:text-white">
+          Settings
+        </a>
+      </li>
+    </ul>
+  </nav>
 );
 };
 
