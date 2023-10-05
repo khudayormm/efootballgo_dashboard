@@ -1,30 +1,23 @@
-import React from 'react';
-// import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
+import { Menu, MenuItem, Sidebar, SubMenu } from "react-pro-sidebar";
 
+const LeftBar = () => {
+  return (
+    <Sidebar className="text-sm">
+      <Menu>
+        <MenuItem href="/dashboard">Dashboard</MenuItem>
+      </Menu>
+      <Menu renderExpandIcon={({ open }) => <span>{open ? '-' : '+'}</span>}>
+        <SubMenu label="BASIC">
+          <MenuItem href="/clubs"> Clubs</MenuItem>
+          <MenuItem href="/users"> Users</MenuItem>
+        </SubMenu>
 
-const LeftBar: React.FC = () => {
-  return(
-    <nav className="w-64 p-5 bg-gray-800 text-white">
-    <h1 className="text-2xl font-bold mb-4">Sidebar</h1>
-    <ul>
-      <li className="mb-2">
-        <a href="/" className="block text-gray-300 hover:text-white">
-          Dashboard
-        </a>
-      </li>
-      <li className="mb-2">
-        <a href="/profile" className="block text-gray-300 hover:text-white">
-          Profile
-        </a>
-      </li>
-      <li className="mb-2">
-        <a href="/settings" className="block text-gray-300 hover:text-white">
-          Settings
-        </a>
-      </li>
-    </ul>
-  </nav>
-);
+        <MenuItem> Calendar</MenuItem>
+        <MenuItem> E-commerce</MenuItem>
+        <MenuItem> Examples</MenuItem>
+      </Menu>
+    </Sidebar>
+  );
 };
 
 export default LeftBar;

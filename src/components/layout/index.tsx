@@ -1,12 +1,18 @@
 import React from 'react';
+import { Navigate } from 'react-router-dom';
 import LeftBar from './sidebar';
 // import { Sidebar } from 'react-prx-sidebar';
 
 interface Props {
  children: React.ReactNode
+ isLogin: boolean
 }
 
-const Layout: React.FC<Props> = ({ children }) => {
+const Layout: React.FC<Props> = ({ children, isLogin }) => {
+  if (!isLogin) {
+    return <Navigate to={'/'} />
+  }
+
   return (
     <div className="flex">
       <LeftBar />
