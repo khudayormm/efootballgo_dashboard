@@ -14,7 +14,7 @@ const LeftBar = () => {
 
         <MenuItem> Calendar</MenuItem>
         <MenuItem> E-commerce</MenuItem>
-        <MenuItem> Examples</MenuItem>
+        <MenuItem href="/logos"> Examples</MenuItem>
       </Menu>
     </Sidebar>
   );

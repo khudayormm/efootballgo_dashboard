@@ -11,7 +11,7 @@ import { countries } from "~/utils/data";
 const schema = yup.object({
   name: yup.string().required(),
   shortName: yup.string().required(),
-  img: yup.string().required(),
+  img: yup.string().required().url("Rasm link bo'lishi zarur!"),
   country: yup.string().required()
 }).required()
 
@@ -44,6 +44,7 @@ const Clubs = () => {
         }
       })
       console.log(res)
+      onOpenChange()
     } catch (error) {
       console.log(error)
     }

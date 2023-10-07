@@ -6,11 +6,17 @@ import {
   TableCell,
   TableColumn,
   TableHeader,
-  TableRow
+  TableRow,
+  useDisclosure
 } from "@nextui-org/react";
 import { ClubData, GET_CLUBS } from "~/apollo/queries/clubs/clubs";
+import MyModal from "~/components/global/modal";
+import PhPencilSimple from "~/components/icons/PhPencilSimple";
+import TrashIcon from "~/components/icons/TrashIcon";
+import UilEye from "~/components/icons/UilEye";
 
 const ClubsTable = () => {
+  const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
   const { data, loading, fetchMore } = useQuery<ClubData>(GET_CLUBS)
 
@@ -23,6 +29,7 @@ const ClubsTable = () => {
           <TableColumn>NAME</TableColumn>
           <TableColumn>ROLE</TableColumn>
           <TableColumn>STATUS</TableColumn>
+          <TableColumn>STATUS</TableColumn>
         </TableHeader>
         <TableBody emptyContent={"No Data"} isLoading={loading} loadingContent={<div className="h-full w-full flex justify-center items-center z-10 bg-white bg-transparent">Laoaaooa</div>}>
          {data.clubs.clubs.map((item, index) => (
@@ -32,22 +39,26 @@ const ClubsTable = () => {
                 <TableCell> {item.short_name} </TableCell>
                 <TableCell> {item.name} </TableCell>
                 <TableCell> {item.color ? item.color : ''} </TableCell> 
+                <TableCell> 
+                  <div className="flex flex-row justify-center items-center border gap-3 h-10">
+                    <TrashIcon onClick={onOpen} className="text-red-400 text-xs active:text-red-200 cursor-pointer transition-all duration-75 w-5 h-5" />
+                    <UilEye className="text-gray-500 text-xs active:text-slate-200 cursor-pointer transition-all duration-75 w-5 h-5" />
+                    <PhPencilSimple className="text-gray-500 text-xs active:text-slate-200 cursor-pointer transition-all duration-75 w-5 h-5" />
+                  </div>
+                </TableCell> 
             </TableRow>
          ))}
         </TableBody>
       </Table>}
 
       {data && <button onClick={() => {
-          // Call fetchMore to load more data
           fetchMore({
             variables: {
-              page: data.clubs.page + 1, // Load the next page
-              // Other variables
+              page: data.clubs.page + 1,
             },
             updateQuery: (prev, { fetchMoreResult }) => {
               if (!fetchMoreResult) return prev;
 
-              // Combine the previous data with the new data
               return {
                 ...prev,
                 clubs: {
@@ -66,6 +77,9 @@ const ClubsTable = () => {
         sasss
         
         </button>}
+
+
+        <MyModal isOpen={isOpen} onOpen={onOpen} onOpenChange={onOpenChange} />
     </div>
   );
 };
